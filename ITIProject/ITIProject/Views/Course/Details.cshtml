@@ -1,0 +1,35 @@
+﻿@model Course
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Course Details</title>
+</head>
+<body>
+    <h2> <b>Name</b> @Model.CourseName</h2>
+
+    <p> <b>Hours</b>@Model.Hours</p>
+
+    <h3>Students</h3>
+
+    @if (Model.Students != null)
+    {
+        <ul>
+            <li>Name -Age-Department</li>
+            @foreach (var student in Model.Students)
+
+
+
+            {
+
+                <li>@student.Name - @student.Age - @student.DeptId</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No students are enrolled in this Course.</p>
+    }
+
+</body>
+</html>

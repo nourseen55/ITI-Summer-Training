@@ -1,0 +1,90 @@
+﻿@model Student
+
+@{
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>Create a New Student</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Name Field -->
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" placeholder="Enter student's name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <!-- Age Field -->
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" placeholder="Enter student's age" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" placeholder="Enter student's Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" placeholder="Enter student's Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmedPassword" class="control-label"></label>
+                <input asp-for="ConfirmedPassword" class="form-control" placeholder="Enter student's Confirmed Password" />
+                <span asp-validation-for="ConfirmedPassword" class="text-danger"></span>
+            </div>
+
+            <!-- Department Dropdown -->
+            <div class="form-group">
+                <label asp-for="DeptId" class="control-label">Department</label>
+                @if (ViewBag.depts != null)
+                {
+                    <select asp-for="DeptId" asp-items="ViewBag.depts" class="form-control">
+                        <option value="">Select Department</option>
+                    </select>
+                }
+                else
+                {
+                    <p>No departments available.</p>
+                }
+
+                <span asp-validation-for="DeptId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CourseId" class="control-label">Course</label>
+                @if (ViewBag.Courses != null)
+                {
+                    <select asp-for="CourseId" asp-items="ViewBag.Courses" class="form-control">
+                        <option value="">Select Course</option>
+                    </select>
+                }
+                else
+                {
+                    <p>No Courses Available.</p>
+                }
+
+                <span asp-validation-for="CourseId" class="text-danger"></span>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary btn-block" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="text-center mt-3">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
